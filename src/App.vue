@@ -12,9 +12,7 @@ export default{
 
 <template>
   <div class="bg-blue-200 min-h-screen p-4">
-    <router-view/>
-    <quiz-display/>
-    <start-screen/>
+    <router-view class="p-20"/>
   </div>
 </template>
 

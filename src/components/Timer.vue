@@ -1,15 +1,12 @@
 <script>
 export default {
-  props: {
-    questionTime: 30,
-    totalTime: 150
-  }
+  props: ['totalTime', 'questionTime']
 }
 </script>
 
 <template>
-    <div>
-        <p>Time left for this question: {{ questionTime }} seconds</p>
+    <div class=" z-10 flex flex-col justify-around w-2/3">
+        <p class="fixed top-5 left-1/4">Time left for this question: {{ questionTime }} seconds</p>
         <p>Total time left: {{ totalTime }} seconds</p>
     </div>
 </template>
