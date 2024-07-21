@@ -39,8 +39,7 @@ export const useQuizStore = defineStore({
             if (this.totalTime > 0) {
             this.totalTime--;
             } else {
-            clearInterval(this.interval);
-            this.quizCompleted = true;
+              this.finished()
             }
         }, 1000);
         },
@@ -63,8 +62,7 @@ export const useQuizStore = defineStore({
               break;
           }
         } else {
-          clearInterval(this.interval);
-          this.quizCompleted = true;
+          this.finished()
           return;
         }
       }
@@ -73,8 +71,7 @@ export const useQuizStore = defineStore({
         this.currentQuestion++;
         this.questionTime = 30;
       } else {
-        clearInterval(this.interval);
-        this.quizCompleted = true
+        this.finished();
       }
     },
     resetQuiz() {
@@ -86,6 +83,9 @@ export const useQuizStore = defineStore({
       this.score = 0;
       this.fetchQuestions();
     },
-
+    finished(){
+      clearInterval(this.interval);
+      this.quizCompleted = true
+    }
 }
 })

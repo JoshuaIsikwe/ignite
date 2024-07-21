@@ -17,9 +17,9 @@ export default {
 
 <template>
     <div class=" flex flex-col items-center justify-around w-2/3">
-        <div class="flex absolute h-10 top-40 left-3/4">
+        <div class="flex absolute  h-10 top-20 md:top-40 left-3/4">
           <p class="flex text-white items-center object-cover font-bold gap-2"><img class="h-full w-full " src="../assets/images/clock.png" alt="">  {{ questionTime }}s</p>
         </div>
-        <p class="bg-red-200 w-full">Total time left: {{ totalTime }}s</p>
+        <p class=" text-green-200 text-sm rounded-lg w-full">Total time left: {{ totalTime }}s</p>
     </div>
 </template>

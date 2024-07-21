@@ -38,12 +38,12 @@ export default{
         <section v-if="currentQuestion < questions.length && totalTime > 0">
             <div class="min-w-full items-center mt-5 w-5/6">
             <div class="flex flex-col mb-4 items-center min-w-full">
-              <span class="text-xs text-white items-left font-semibold">Difficulty: {{ questions[currentQuestion].difficulty }}</span>
-              <h2 class="text-white text-center font-bold text-2xl min-w-full">{{ questions[currentQuestion].question }}</h2>
+              <span class="text-xs text-green-100 items-left font-semibold">Difficulty: {{ questions[currentQuestion].difficulty }}</span>
+              <h2 class="text-green-100 text-center font-bold text-2xl min-w-full">{{ questions[currentQuestion].question }}</h2>
             </div>
             <div class="flex flex-col text-center justify-evenly gap-5 items-center rounded-md w-full h-1/3">
-              <div class="grid grid-cols-2 grid-rows-2 min-w-full gap-10">
-                <button v-for="(option, index) in questions[currentQuestion].options" :key="index" class="btn-option" @click="nextQuestion(option)"> {{ option }}</button>
+              <div class="grid md:grid-cols-2 grid-rows-2 grid-cols-1 min-w-full gap-10">
+                <button v-for="(option, index) in questions[currentQuestion].options" :key="index" class="btn-option" @click="nextQuestion(option)">{{ index +1 }}. {{ option }}</button>
               </div>
                 <!-- Timer -->
                 <div>

@@ -5,26 +5,24 @@ import { useQuizStore } from '../stores/Store';
 export default{
     setup(){
         const store = useQuizStore()
+        
+        const goHome = () => {
+        store.finished()
+        };
 
         return{
-            quizCompleted: store.quizCompleted
+            goHome
         }
     },
-
-    methods:{
-        goHome(){
-            this.quizCompleted = true;
-        }
-    }
 
 }
 </script>
 
 <template>
     <div>
-        <div @click="goHome" class="w-24 h-24 p-1 flex text-center absolute items-center bottom-40 shadow-xl left-3/4 rounded-full cursor-pointer hover:shadow-sm bg-red-700" >
+        <button @click="goHome()" class="w-24 h-24 p-1 flex text-center font-semibold absolute items-center bottom-20 md:bottom-40 shadow-xl left-3/4 rounded-full cursor-pointer hover:scale-95 bg-red-700" >
             Leave with winnings
-        </div>
+        </button>
     </div>
     
 </template>

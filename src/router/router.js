@@ -1,8 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router" 
 //import App from "../App.vue"
 import QuizDisplay from "../views/QuizDisplay.vue"
-import Results from "../views/Results.vue"
+
 import StartScreen from "../views/StartScreen.vue"
+import Modal from "../components/Modal.vue"
 
 
 const links = [
@@ -19,7 +20,7 @@ component: QuizDisplay,
 {
 path: "/results",     
 name: "Results",     
-component: Results,
+component: Modal,
 },
 
 ]
