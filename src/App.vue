@@ -11,7 +11,7 @@ export default{
 </script>
 
 <template>
-  <div class="bg-blue-200 min-h-screen p-4">
+  <div class="bg-blue-900 min-h-screen p-4">
     <router-view class="p-20"/>
   </div>
 </template>

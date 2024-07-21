@@ -10,6 +10,10 @@
 
 @layer components{
     .btn-option{
-        @apply bg-gray-200 p-4 w-2/3 shadow-md rounded-md text-center hover:shadow-none
+        @apply bg-gray-200 p-4 font-semibold text-green-800 shadow-md rounded-md min-w-full text-center hover:shadow-none cursor-pointer hover:bg-gray-400
     }
+}
+
+@layer utilities{
+
 }

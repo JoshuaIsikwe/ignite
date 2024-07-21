@@ -1,12 +1,25 @@
 <script>
+import { computed } from 'vue';
+import { useQuizStore } from '../stores/Store';
+
+
 export default {
-  props: ['totalTime', 'questionTime']
+  setup (){
+    const store = useQuizStore()
+
+    return {
+      questionTime: computed(()=> store.questionTime),
+      totalTime: computed(()=> store.totalTime),
+    }
+  }
 }
 </script>
 
 <template>
-    <div class=" z-10 flex flex-col justify-around w-2/3">
-        <p class="fixed top-5 left-1/4">Time left for this question: {{ questionTime }} seconds</p>
-        <p>Total time left: {{ totalTime }} seconds</p>
+    <div class=" flex flex-col items-center justify-around w-2/3">
+        <div class="flex absolute h-10 top-40 left-3/4">
+          <p class="flex text-white items-center object-cover font-bold gap-2"><img class="h-full w-full " src="../assets/images/clock.png" alt="">  {{ questionTime }}s</p>
+        </div>
+        <p class="bg-red-200 w-full">Total time left: {{ totalTime }}s</p>
     </div>
 </template>
