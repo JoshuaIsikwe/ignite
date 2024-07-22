@@ -14,6 +14,7 @@ export const useQuizStore = defineStore({
     }),
 
     actions:{
+      //Api Call
        async fetchQuestions() {
 
         try {
@@ -26,6 +27,7 @@ export const useQuizStore = defineStore({
         }
         
       },
+      //Timer and scoring
       startTimer() {
         this.interval = setInterval(() => {
             if (this.questionTime > 0) {

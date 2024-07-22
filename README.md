@@ -6,3 +6,5 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
  After type "npm run dev" to start the app
  This will take you to the homepage of the quiz. Enjoy
+
+I used Vuetify framework because as a result of it's poularity there are a lot of resources to learn it and debug if there are any issues. It is also customizable
