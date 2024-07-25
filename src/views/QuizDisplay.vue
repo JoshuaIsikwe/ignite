@@ -4,17 +4,30 @@ import Modal from '../components/Modal.vue';
 import Timer from '../components/Timer.vue'
 import { useQuizStore } from '../stores/Store';
 import ExitButton from '../components/ExitButton.vue';
+import { watch } from 'vue';
 
 export default{
   components: { Timer, Modal, ExitButton },
 
 
     setup(){
-      const store = useQuizStore()
+      const store = useQuizStore();
 
-      onMounted(() =>{
-        store.fetchQuestions()
+
+    onMounted(() =>{
+        store.fetchQuestions().then(()=>{
+          store.nextQuestionLevel()
+        })
+        //nextQuestionLevel()
+        //console.log(nextScore)
       });
+
+      watch(
+      () => store.currentQuestion,
+      () => {
+        store.nextQuestionLevel();
+      }
+    );
 
       return {
       questions: computed(()=> store.questions),
@@ -26,15 +39,26 @@ export default{
       score: computed(()=> store.score),
       quizCompleted: computed(()=> store.quizCompleted),
       nextQuestion: store.nextQuestion,
-      resetQuiz : store.resetQuiz
+      resetQuiz : store.resetQuiz,
+      correctAnswers: computed(()=> store.correctAnswers),
+      nextScore: computed(()=> store.nextScore),
+      nextQuestionLevel: store.nextQuestionLevel,
+      friendAnswer: computed(()=>store.friendAnswer),
+      phoneFriend: store.phoneFriend,
+      friendAnswered: computed(()=> store.friendAnswered)
     }
-    },
-   
+    }
+
+      
 }
 </script>
 
 <template>
     <div class="min-h-screen max-h-screen flex flex-col w-screen items-center text-center bg-showroom bg-cover bg-no-repeat">
+      <div>
+        <h4 class="text-green-300 text-sm md:text-lg font-bold ">Your current score is {{ score }}</h4>
+        <h4 class="text-yellow-300">Next question points: {{ nextScore }}</h4>
+      </div>
         <section v-if="currentQuestion < questions.length && totalTime > 0">
             <div class="min-w-full items-center mt-5 w-5/6">
             <div class="flex flex-col mb-4 items-center min-w-full">
@@ -49,10 +73,12 @@ export default{
                 <div>
                   <timer/>
                   <exit-button/>
+                  <button @click="phoneFriend" :disabled="friendAnswered" :aria-disabled="friendAnswered" class="bg-green-400 rounded-xl p-5 mt-4">Phone a friend</button>
+                  <p v-if="friendAnswered" class="text-white">{{ friendAnswer }}</p>
                 </div>
                 <!-- modal -->
                 <section v-if="quizCompleted">
-                  <modal :score="score"/>
+                  <modal :score="score" :correctAnswers="correctAnswers"/>
                 </section>
             </div>
         </div>
