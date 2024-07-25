@@ -133,6 +133,7 @@ export const useQuizStore = defineStore({
       this.quizCompleted = false;
       this.score = 0;
       this.fetchQuestions();
+      this.friendAnswered = false
     },
     finished(){
       clearInterval(this.interval);
